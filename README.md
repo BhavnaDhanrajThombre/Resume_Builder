@@ -24,8 +24,9 @@ A simple and responsive Resume Builder web application created using **HTML**, *
 ###  Clone the Repository
 
 
-git clone  https://github.com/BhavnaDhanrajThombre/Resume_Builder.git
-# cd RESUME BUILDER
+# git clone  
+https://github.com/BhavnaDhanrajThombre/Resume_Builder.git
+
 
 ### Open in Browser
 Just open index.html in your preferred browser to start using the Resume Builder.
