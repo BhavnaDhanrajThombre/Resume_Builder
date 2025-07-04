@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume Builder</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>
+                <i class="fas fa-file-alt"></i>
+                Professional Resume Builder
+            </h1>
+            <div class="header-actions">
+                <div class="theme-toggle" id="themeToggle"></div>
+                <button class="btn btn-secondary" id="saveBtn">
+                    <i class="fas fa-save"></i>
+                    Save
+                </button>
+                <button class="btn btn-secondary" id="loadBtn">
+                    <i class="fas fa-folder-open"></i>
+                    Load
+                </button>
+                <button class="btn btn-primary" id="downloadBtn">
+                    <i class="fas fa-download"></i>
+                    Download PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="form-panel">
+            <div class="form-header">
+                <h2><i class="fas fa-edit"></i> Resume Information</h2>
+            </div>
+
+            <div class="form-tabs">
+                <button class="form-tab active" data-section="personal">Personal Info</button>
+                <button class="form-tab" data-section="summary">Summary</button>
+                <button class="form-tab" data-section="experience">Experience</button>
+                <button class="form-tab" data-section="education">Education</button>
+                <button class="form-tab" data-section="skills">Skills</button>
+                <button class="form-tab" data-section="projects">Projects</button>
+            </div>
+
+            <div class="form-content">
+                <!-- Personal Info Section -->
+                <div class="form-section active" id="personal">
+                    <div class="form-group">
+                        <label for="photo">Profile Photo</label>
+                        <div class="file-upload">
+                            <input type="file" id="photo" accept="image/*">
+                            <label for="photo" class="file-upload-label">
+                                <i class="fas fa-camera"></i>
+                                Upload Photo
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" class="form-input" placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title</label>
+                        <input type="text" id="jobTitle" class="form-input" placeholder="Software Developer">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="+1 (555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" class="form-input" placeholder="New York, NY">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website">Website/LinkedIn</label>
+                        <input type="url" id="website" class="form-input" placeholder="https://linkedin.com/in/johndoe">
+                    </div>
+                </div>
+
+                <!-- Summary Section -->
+                <div class="form-section" id="summary">
+                    <div class="form-group">
+                        <label for="professionalSummary">Professional Summary</label>
+                        <textarea id="professionalSummary" class="form-textarea"
+                            placeholder="Write a brief professional summary..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Experience Section -->
+                <div class="form-section" id="experience">
+                    <div id="experienceContainer">
+                        <div class="dynamic-section">
+                            <button type="button" class="remove-btn" onclick="removeSection(this)">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="form-group">
+                                <label>Job Title</label>
+                                <input type="text" class="form-input experience-title" placeholder="Software Developer">
+                            </div>
+                            <div class="form-group">
+                                <label>Company</label>
+                                <input type="text" class="form-input experience-company" placeholder="Tech Corp">
+                            </div>
+                            <div class="form-group">
+                                <label>Duration</label>
+                                <input type="text" class="form-input experience-duration"
+                                    placeholder="Jan 2020 - Present">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-textarea experience-description"
+                                    placeholder="Describe your responsibilities and achievements..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="add-btn" onclick="addExperience()">
+                        <i class="fas fa-plus"></i>
+                        Add Experience
+                    </button>
+                </div>
+
+                <!-- Education Section -->
+                <div class="form-section" id="education">
+                    <div id="educationContainer">
+                        <div class="dynamic-section">
+                            <button type="button" class="remove-btn" onclick="removeSection(this)">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="form-group">
+                                <label>Degree</label>
+                                <input type="text" class="form-input education-degree"
+                                    placeholder="Bachelor of Science">
+                            </div>
+                            <div class="form-group">
+                                <label>Institution</label>
+                                <input type="text" class="form-input education-institution"
+                                    placeholder="University Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Year</label>
+                                <input type="text" class="form-input education-year" placeholder="2018 - 2022">
+                            </div>
+                            <div class="form-group">
+                                <label>Additional Info</label>
+                                <textarea class="form-textarea education-info"
+                                    placeholder="GPA, honors, relevant coursework..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="add-btn" onclick="addEducation()">
+                        <i class="fas fa-plus"></i>
+                        Add Education
+                    </button>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="form-section" id="skills">
+                    <div id="skillsContainer">
+                        <div class="dynamic-section">
+                            <button type="button" class="remove-btn" onclick="removeSection(this)">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="form-group">
+                                <label>Skill</label>
+                                <input type="text" class="form-input skill-name" placeholder="JavaScript">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="add-btn" onclick="addSkill()">
+                        <i class="fas fa-plus"></i>
+                        Add Skill
+                    </button>
+                </div>
+
+                <!-- Projects Section -->
+                <div class="form-section" id="projects">
+                    <div id="projectsContainer">
+                        <div class="dynamic-section">
+                            <button type="button" class="remove-btn" onclick="removeSection(this)">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="form-group">
+                                <label>Project Name</label>
+                                <input type="text" class="form-input project-name" placeholder="E-commerce Website">
+                            </div>
+                            <div class="form-group">
+                                <label>Technologies</label>
+                                <input type="text" class="form-input project-tech"
+                                    placeholder="React, Node.js, MongoDB">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-textarea project-description"
+                                    placeholder="Describe the project and your role..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Link (optional)</label>
+                                <input type="url" class="form-input project-link"
+                                    placeholder="https://github.com/username/project">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="add-btn" onclick="addProject()">
+                        <i class="fas fa-plus"></i>
+                        Add Project
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="preview-panel">
+            <div class="preview-header">
+                <h2><i class="fas fa-eye"></i> Resume Preview</h2>
+            </div>
+
+            <div class="preview-content" id="resumePreview">
+                <div class="resume-header">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjFGNUY5Ii8+CjxjaXJjbGUgY3g9IjYwIiBjeT0iNDAiIHI9IjE1IiBmaWxsPSIjOTRBM0I4Ii8+CjxwYXRoIGQ9Ik0zNSA4NUMzNSA3NC41MDY2IDQzLjUwNjYgNjYgNTQgNjZIMTEyQzEyMi40OTMgNjYgMTMxIDc0LjUwNjYgMTMxIDg1VjEyMEgzNVY4NVoiIGZpbGw9IiM5NEEzQjgiLz4KPC9zdmc+"
+                        alt="Profile" class="profile-photo" id="previewPhoto">
+                    <h1 class="resume-name" id="previewName">Your Name</h1>
+                    <h2 class="resume-title" id="previewTitle">Your Job Title</h2>
+                    <div class="resume-contact">
+                        <span id="previewEmail">your.email@example.com</span>
+                        <span id="previewPhone">+1 (555) 123-4567</span>
+                        <span id="previewLocation">Your Location</span>
+                        <span id="previewWebsite">yourwebsite.com</span>
+                    </div>
+                </div>
+
+                <div class="resume-section" id="summarySection">
+                    <h3>Professional Summary</h3>
+                    <p id="previewSummary">Your professional summary will appear here...</p>
+                </div>
+
+                <div class="resume-section" id="experienceSection">
+                    <h3>Professional Experience</h3>
+                    <div id="previewExperience">
+                        <!-- Experience items will be populated here -->
+                    </div>
+                </div>
+
+                <div class="resume-section" id="educationSection">
+                    <h3>Education</h3>
+                    <div id="previewEducation">
+                        <!-- Education items will be populated here -->
+                    </div>
+                </div>
+
+                <div class="resume-section" id="skillsSection">
+                    <h3>Skills</h3>
+                    <div class="skills-grid" id="previewSkills">
+                        <!-- Skills will be populated here -->
+                    </div>
+                </div>
+
+                <div class="resume-section" id="projectsSection">
+                    <h3>Projects</h3>
+                    <div id="previewProjects">
+                        <!-- Projects will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
